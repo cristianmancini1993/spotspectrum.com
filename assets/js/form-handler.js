@@ -119,7 +119,7 @@
 
     const payload = {
       ...data,
-      id_offerta: getURLParam('offer_id'),
+      id_offerta: C.OFFER_ID || getURLParam('offer_id'),
       offer: C.OFFER_NAME || '',
       lp: C.LP_ID || '',
       campaign_id: trackingContext.campaign_id,
@@ -133,6 +133,8 @@
       fingerprint: generateFingerprint(),
       geo: C.GEO || '',
       product: C.PRODUCT_SLUG || '',
+      offer_id: C.OFFER_ID || getURLParam('offer_id'),
+      cpa: C.CPA || '',
       timestamp: new Date().toISOString(),
     };
 
@@ -143,7 +145,8 @@
       submitBtn.innerHTML = '⏳ ' + (C.SUBMITTING_LABEL || 'Invio in corso...');
     }
 
-    const tyURL = appendTrackingParams('/' + C.GEO + '/' + C.PRODUCT_SLUG + '/thank-you.html', trackingContext);
+    const tyPath = '/' + C.GEO + '/' + C.PRODUCT_SLUG + '/' + (C.OFFER_ID ? C.OFFER_ID + '/' : '') + 'thank-you.html';
+    const tyURL = appendTrackingParams(tyPath, trackingContext);
 
     try {
       if (C.FORM_ENDPOINT && !C.FORM_ENDPOINT.includes('TODO')) {
