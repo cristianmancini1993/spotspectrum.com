@@ -1,0 +1,29 @@
+@import url("/assets/css/droniq-landing.css");
+
+/* Fill every square image frame without blank space. */
+.hero-image,
+.why-img {
+  aspect-ratio: 1 / 1;
+}
+
+.hero-image img,
+.why-img img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.kit-box > img,
+.testimonial .t-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+@media (min-width: 960px) {
+  .why-block:nth-of-type(even) .why-img {
+    order: 2;
+  }
+}
